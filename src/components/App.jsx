@@ -1,12 +1,14 @@
-import adalabImage from "../images/adalab.png";
-import avatarImage from "../images/avatar.webp";
-import laptopCodeImage from "../images/laptop-code-solid.svg";
-import ebookkExampleImagen from "../images/ebook-example.jpg";
-import gitHubIcon from "../images/icons/github.svg";
-import globeSolid from "../images/icons/globe-solid.svg";
 
-import "../styles/App.scss";
+
+ import avatarImage from '../images/avatar.webp';
+ import ebookkExampleImagen from '../images/ebook-example.jpg';
+ import gitHubIcon from '../images/icons/github.svg';
+ import globeSolid from '../images/icons/globe-solid.svg';
+import Footer from './Sections/Footer';
+import Header from './Sections/Header';
 import CreateBtns from "./Sections/Buttons/Create-Btns";
+import '../styles/App.scss'
+
 
 function App() {
   //Función guardar form en API
@@ -18,21 +20,9 @@ function App() {
 
   return (
     <div className="container">
-      <header className="header">
-        <a
-          className="header__brand"
-          href="./"
-          title="Haz click para volver a la página inicial"
-        >
-          <img
-            className="header__companyLogo"
-            src={laptopCodeImage}
-            alt="Logo proyectos molones"
-          />
-          <h1 className="header__title">Proyectos molones</h1>
-        </a>
-        <img className="logoSponsor" src={adalabImage} alt="Logo Adalab" />
-      </header>
+     
+   <Header />
+
 
       <main className="main">
         <section className="hero">
@@ -44,6 +34,8 @@ function App() {
             Ver proyectos
           </a>
         </section>
+
+  
 
         <section className="preview">
           <div className="projectImage"></div>
@@ -144,6 +136,7 @@ function App() {
             ></textarea>
           </fieldset>
 
+
           <fieldset className="addForm__group">
             <legend className="addForm__title">
               Cuéntanos sobre la autora
@@ -178,9 +171,10 @@ function App() {
         </form>
       </main>
 
-      <footer className="footer">
-        <img className="logoSponsor" src={adalabImage} alt="Logo Adalab" />
-      </footer>
+    <Footer />
+
+
+      
     </div>
   );
 }
