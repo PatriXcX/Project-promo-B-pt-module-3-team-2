@@ -1,10 +1,10 @@
-import adalabImage from '../images/adalab.png';
-import avatarImage from '../images/avatar.webp';
-import laptopCodeImage from '../images/laptop-code-solid.svg';
-import ebookkExampleImagen from '../images/ebook-example.jpg';
-import gitHubIcon from '../images/icons/github.svg';
-import globeSolid from '../images/icons/globe-solid.svg';
 
+ import avatarImage from '../images/avatar.webp';
+ import ebookkExampleImagen from '../images/ebook-example.jpg';
+ import gitHubIcon from '../images/icons/github.svg';
+ import globeSolid from '../images/icons/globe-solid.svg';
+import Footer from './Sections/Footer';
+import Header from './Sections/Header';
 
 import '../styles/App.scss'
 
@@ -13,13 +13,7 @@ function App() {
     
       <div className="container">
 
-<header className="header">
-  <a className="header__brand" href="./" title="Haz click para volver a la página inicial">
-    <img className="header__companyLogo" src={laptopCodeImage} alt="Logo proyectos molones" />
-    <h1 className="header__title">Proyectos molones</h1>
-  </a>
-  <img className="logoSponsor" src={adalabImage} alt="Logo Adalab" />
-</header>
+   <Header />
 
 <main className="main">
   <section className="hero">
@@ -94,10 +88,9 @@ function App() {
     
   </form>
 </main>
+    <Footer />
 
-<footer className="footer">
-  <img className="logoSponsor" src={adalabImage} alt="Logo Adalab" />
-</footer>
+
 
 </div>
       
