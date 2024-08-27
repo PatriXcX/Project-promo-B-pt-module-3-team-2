@@ -1,14 +1,11 @@
-
-
- import avatarImage from '../images/avatar.webp';
- import ebookkExampleImagen from '../images/ebook-example.jpg';
- import gitHubIcon from '../images/icons/github.svg';
- import globeSolid from '../images/icons/globe-solid.svg';
-import Footer from './Sections/Footer';
-import Header from './Sections/Header';
+import avatarImage from "../images/avatar.webp";
+import ebookkExampleImagen from "../images/ebook-example.jpg";
+import gitHubIcon from "../images/icons/github.svg";
+import globeSolid from "../images/icons/globe-solid.svg";
+import Footer from "./Sections/Footer";
+import Header from "./Sections/Header";
 import CreateBtns from "./Sections/Buttons/Create-Btns";
-import '../styles/App.scss'
-
+import "../styles/App.scss";
 
 function App() {
   //Función guardar form en API
@@ -20,9 +17,7 @@ function App() {
 
   return (
     <div className="container">
-     
-   <Header />
-
+      <Header />
 
       <main className="main">
         <section className="hero">
@@ -34,8 +29,6 @@ function App() {
             Ver proyectos
           </a>
         </section>
-
-  
 
         <section className="preview">
           <div className="projectImage"></div>
@@ -136,7 +129,6 @@ function App() {
             ></textarea>
           </fieldset>
 
-
           <fieldset className="addForm__group">
             <legend className="addForm__title">
               Cuéntanos sobre la autora
@@ -171,10 +163,7 @@ function App() {
         </form>
       </main>
 
-    <Footer />
-
-
-      
+      <Footer />
     </div>
   );
 }
