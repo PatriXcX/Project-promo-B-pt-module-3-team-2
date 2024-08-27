@@ -1,3 +1,4 @@
+import { useState } from "react";
 import avatarImage from "../images/avatar.webp";
 import ebookkExampleImagen from "../images/ebook-example.jpg";
 import gitHubIcon from "../images/icons/github.svg";
@@ -7,95 +8,111 @@ import Header from "./Sections/Header";
 import CreateBtns from "./Sections/Buttons/Create-Btns";
 import "../styles/App.scss";
 import Info from "./Sections/Info";
+import InfoBtns from "./Sections/Buttons/Info-Btns";
 
 function App() {
-  //Función guardar form en API
+	//Función subir imagenes buttons form en API
 
-  const handleCreateBtnsSave = (ev) => {
-    ev.preventDefault();
-    console.log("has hecho click");
-  };
+	const [image, setImage] = useState(null);
+	const [photo, setPhoto] = useState(null);
 
-  return (
-    <div className="container">
-      <Header />
+	const uploadImage = (file) => {
+		setImage(file);
+	};
+	const uploadPhoto = (file) => {
+		setPhoto(file);
+	};
 
-      <main className="main">
-        <section className="hero">
-          <h2 className="title">Proyectos molones</h2>
-          <p className="hero__text">
-            Escaparate en línea para recoger ideas a través de la tecnología
-          </p>
-          <a className="button--link" href="./">
-            Ver proyectos
-          </a>
-        </section>
+	//Función guardar form en API
 
-        <section className="preview">
-          <div className="projectImage"></div>
-          <article className="card">
-            <h2 className="card__projectTitle">
-              <span className="card__projectTitle--text">
-                Personal project card
-              </span>
-            </h2>
+	const handleCreateBtnsSave = (ev) => {
+		ev.preventDefault();
+		console.log("has hecho click");
+	};
 
-            <div className="card__author">
-              <div className="card__authorPhoto"></div>
-              <p className="card__job">Full stack Developer</p>
-              <h3 className="card__name">Emmelie Bjôrklund</h3>
-            </div>
+	return (
+		<div className="container">
+			<Header />
 
-            <div className="card__project">
-              <h3 className="card__name">Elegant Workspace</h3>
-              <p className="card__slogan">Diseños Exclusivos</p>
-              <h3 className="card__descriptionTitle">Product description</h3>
-              <p className="card__description">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla,
-                quos? Itaque, molestias eveniet laudantium adipisci vitae
-                ratione
-              </p>
+			<main className="main">
+				<section className="hero">
+					<h2 className="title">Proyectos molones</h2>
+					<p className="hero__text">
+						Escaparate en línea para recoger ideas a través de la
+						tecnología
+					</p>
+					<a className="button--link" href="./">
+						Ver proyectos
+					</a>
+				</section>
 
-              <div className="card__technicalInfo">
-                <p className="card__technologies">React JS - HTML - CSS</p>
+				<section className="preview">
+					<div className="projectImage"></div>
+					<article className="card">
+						<h2 className="card__projectTitle">
+							<span className="card__projectTitle--text">
+								Personal project card
+							</span>
+						</h2>
 
-                <a
-                  className="icon icon__www"
-                  href="#"
-                  title="Haz click para ver el proyecto online"
-                >
-                  Web link
-                </a>
-                <a
-                  className="icon icon__github"
-                  href="#"
-                  title="Haz click para ver el código del proyecto"
-                >
-                  GitHub link
-                </a>
-              </div>
-            </div>
-          </article>
-        </section>
-        <form className="addForm">
-          <Info />
-          <fieldset className="addForm__group--upload">
-            <label className="button">
-              Subir foto del proyecto
-              <input className="addForm__hidden" type="file" />
-            </label>
-            <label className="button">
-              Subir foto de la autora
-              <input className="addForm__hidden" type="file" />
-            </label>
-            <CreateBtns handleCreateBtnsSave={handleCreateBtnsSave} />
-          </fieldset>
-        </form>
-      </main>
+						<div className="card__author">
+							<div className="card__authorPhoto"></div>
+							<p className="card__job">Full stack Developer</p>
+							<h3 className="card__name">Emmelie Bjôrklund</h3>
+						</div>
 
-      <Footer />
-    </div>
-  );
+						<div className="card__project">
+							<h3 className="card__name">Elegant Workspace</h3>
+							<p className="card__slogan">Diseños Exclusivos</p>
+							<h3 className="card__descriptionTitle">
+								Product description
+							</h3>
+							<p className="card__description">
+								Lorem ipsum dolor, sit amet consectetur
+								adipisicing elit. Nulla, quos? Itaque, molestias
+								eveniet laudantium adipisci vitae ratione
+							</p>
+
+							<div className="card__technicalInfo">
+								<p className="card__technologies">
+									React JS - HTML - CSS
+								</p>
+
+								<a
+									className="icon icon__www"
+									href="#"
+									title="Haz click para ver el proyecto online"
+								>
+									Web link
+								</a>
+								<a
+									className="icon icon__github"
+									href="#"
+									title="Haz click para ver el código del proyecto"
+								>
+									GitHub link
+								</a>
+							</div>
+						</div>
+					</article>
+				</section>
+				<form className="addForm">
+					<Info />
+					<fieldset className="addForm__group--upload">
+						<InfoBtns
+							uploadImage={uploadImage}
+							uploadPhoto={uploadPhoto}
+						/>
+						<CreateBtns
+							handleCreateBtnsSave={handleCreateBtnsSave}
+						/>
+					</fieldset>
+				</form>
+			</main>
+
+			<Footer />
+		</div>
+	);
 }
 
 export default App;
