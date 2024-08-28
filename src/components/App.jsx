@@ -88,7 +88,9 @@ function App() {
               Subir foto de la autora
               <input className="addForm__hidden" type="file" />
             </label>
-            <CreateBtns handleCreateBtnsSave={handleCreateBtnsSave} />
+            <CreateBtns handleCreateBtnsSave={handleCreateBtnsSave}>
+              <p>Guardar Proyecto</p>
+            </CreateBtns>
           </fieldset>
         </form>
       </main>
