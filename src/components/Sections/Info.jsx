@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
 
-function Info({info, handleInput}) {
-  
+function Info({ info, handleInput }) {
   return (
     <>
       <h2 className="title">Información</h2>
       <fieldset className="addForm__group">
         <legend className="addForm__title">Cuéntanos sobre el proyecto</legend>
         <input
-          value={info.nombreDelProyecto}
+          value={info.name}
           onInput={handleInput}
           className="addForm__input"
           type="text"
-          name="nombreDelProyecto"
-          id="nombreDelProyecto"
+          name="name"
+          id="name"
           placeholder="Nombre del proyecto"
         />
         <input
