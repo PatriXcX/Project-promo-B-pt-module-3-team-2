@@ -1,32 +1,7 @@
 import { useEffect, useState } from "react";
 
-function Info() {
+function Info({info, handleInput}) {
   
-  const [info, setInfo] = useState({
-    nombreDelProyecto: "",
-    slogan: "",
-    repo: "",
-    demo: "",
-    technologies: "",
-    desc: "",
-    autor: "",
-    job: "",
-  });
-
-  useEffect(() => {
-    const info = localStorage.getItem("formInfo");
-    if (info) {
-      setInfo(JSON.parse(info));
-    }
-  }, []);
-
-  const handleInput = (ev) => {
-    const key = ev.currentTarget.name;
-    const newInfo = { ...info, [key]: ev.currentTarget.value };
-    setInfo(newInfo);
-    localStorage.setItem("formInfo", JSON.stringify(newInfo));
-  };
-
   return (
     <>
       <h2 className="title">Información</h2>
