@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import avatarImage from "../images/avatar.webp";
 import ebookkExampleImagen from "../images/ebook-example.jpg";
 import gitHubIcon from "../images/icons/github.svg";
@@ -30,6 +30,31 @@ function App() {
 		console.log("has hecho click");
 	};
 
+  const [info, setInfo] = useState({
+    nombreDelProyecto: "",
+    slogan: "",
+    repo: "",
+    demo: "",
+    technologies: "",
+    desc: "",
+    autor: "",
+    job: "",
+  });
+
+  useEffect(() => {
+    const info = localStorage.getItem("formInfo");
+    if (info) {
+      setInfo(JSON.parse(info));
+    }
+  }, []);
+
+  const handleInput = (ev) => {
+    const key = ev.currentTarget.name;
+    const newInfo = { ...info, [key]: ev.currentTarget.value };
+    setInfo(newInfo);
+    localStorage.setItem("formInfo", JSON.stringify(newInfo));
+  };
+
 	return (
 		<div className="container">
 			<Header />
@@ -58,7 +83,7 @@ function App() {
 						<div className="card__author">
 							<div className="card__authorPhoto"></div>
 							<p className="card__job">Full stack Developer</p>
-							<h3 className="card__name">Emmelie Bjôrklund</h3>
+							<h3 className="card__name">{info.nombreDelProyecto}</h3>
 						</div>
 
 						<div className="card__project">
@@ -97,7 +122,7 @@ function App() {
 					</article>
 				</section>
 				<form className="addForm">
-					<Info />
+					<Info info={info} handleInput={handleInput} />
 					<fieldset className="addForm__group--upload">
 						<InfoBtns
 							uploadImage={uploadImage}
