@@ -27,14 +27,14 @@ function Preview({ info }) {
 
             <a
               className="icon icon__www"
-              href="#"
+              href={info.demo}
               title="Haz click para ver el proyecto online"
             >
               Web link
             </a>
             <a
               className="icon icon__github"
-              href="#"
+              href={info.rep}
               title="Haz click para ver el código del proyecto"
             >
               GitHub link
