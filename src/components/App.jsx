@@ -18,7 +18,7 @@ function App() {
 
   const HandleCreateProject = () => {
     console.log("has hecho click");
-
+    
     fetch(
       "https://dev.adalab.es/api/projectCard",
 
@@ -38,7 +38,7 @@ function App() {
           setSaveProjectSuccess("");
         } else if (responseJson.success === true) {
           setSaveProjectSuccess(
-            `Proyecto subido exitosamente. Puedes verlo <a href="${responseJson.cardURL}" target="_blank">aquí</a>`
+            responseJson.cardURL
           );
           setSaveProjectFail("");
         }
@@ -113,7 +113,7 @@ function App() {
           </fieldset>
           <div>
       {saveProjectFail && <p style={{ color: 'red' }}>{saveProjectFail}</p>}
-      {saveProjectSuccess && <p style={{ color: 'green' }} >{saveProjectSuccess}</p>}
+      {saveProjectSuccess && <p style={{ color: 'green' }} >Proyecto subido exitosamente. Puedes verlo aquí: <a href={saveProjectSuccess}>{saveProjectSuccess}</a></p>}
       
     </div>
         </form>
