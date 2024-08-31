@@ -12,35 +12,46 @@ import InfoBtns from "./Sections/Buttons/Info-Btns";
 import Preview from "./Sections/Preview";
 
 function App() {
+  const [saveProjectSuccess, setSaveProjectSuccess] = useState("");
+  const [saveProjectFail, setSaveProjectFail] = useState("");
   //Función guardar form en API
 
-  const handleCreateBtnsSave = (ev) => {
-    ev.preventDefault();
+  const HandleCreateProject = () => {
     console.log("has hecho click");
 
-    fetch('https://dev.adalab.es/api/projectCard',
-      
+    fetch(
+      "https://dev.adalab.es/api/projectCard",
+
       {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-})
-  
-      .then(response => response.json())
-      .then (responseJson => {
-
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(info),
+      }
+    )
+      .then((response) => response.json())
+      .then((responseJson) => {
         if (responseJson.success === false) {
-       
-            `<P>Ha sucedido un error al crear la tarjeta</P>
-               <P>${responseJson.error}</P>
-              `;
+          setSaveProjectFail(
+            `Ha sucedido un error al crear la tarjeta: ${responseJson.error}`
+          );
+          setSaveProjectSuccess("");
         } else if (responseJson.success === true) {
-          creatCardLink.innerHTML = `<a href="${responseJson.cardURL}" target="_blank" class="creat_Card_link">${dataResponse.cardURL}</a>`;
-          
+          setSaveProjectSuccess(
+            `Proyecto subido exitosamente. Puedes verlo <a href="${responseJson.cardURL}" target="_blank">aquí</a>`
+          );
+          setSaveProjectFail("");
+        }
+      });
+  };
 
-        
-      };
+  return (
+    <div>
+      <button onClick={HandleCreateProject}>Guardar proyecto</button>
+      {saveProjectFail && <p style={{ color: 'red' }}>{saveProjectFail}</p>}
+      {saveProjectSuccess && <p style={{ color: 'green' }} dangerouslySetInnerHTML={{ __html: saveProjectSuccess }} />}
+    </div>
+  );
+}
 
   const [info, setInfo] = useState({
     name: "",
@@ -101,7 +112,7 @@ function App() {
             <InfoBtns infoKey="photo" updateImage={updateImages}>
               Subir foto de la autora
             </InfoBtns>
-            <CreateBtns handleCreateBtnsSave={handleCreateBtnsSave}>
+            <CreateBtns onClick={HandleCreateProject} >
               Guardar Proyecto
             </CreateBtns>
           </fieldset>
