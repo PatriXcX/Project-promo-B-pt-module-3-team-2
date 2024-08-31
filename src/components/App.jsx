@@ -113,7 +113,7 @@ function App() {
           </fieldset>
           <div>
       {saveProjectFail && <p style={{ color: 'red' }}>{saveProjectFail}</p>}
-      {saveProjectSuccess && <p style={{ color: 'green' }} >Proyecto subido exitosamente. Puedes verlo aquí: <a href={saveProjectSuccess}>{saveProjectSuccess}</a></p>}
+      {saveProjectSuccess && <p style={{ color: 'green' }} >Proyecto subido exitosamente. Puedes verlo aquí: <a className="linkProyect" href={saveProjectSuccess}>{saveProjectSuccess}</a></p>}
       
     </div>
         </form>
