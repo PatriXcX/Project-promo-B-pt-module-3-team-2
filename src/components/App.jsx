@@ -33,6 +33,7 @@ function App() {
         if (responseJson.success === false) {
           setSaveProjectFail(
             `Ha sucedido un error al crear la tarjeta: ${responseJson.error}`
+            
           );
           setSaveProjectSuccess("");
         } else if (responseJson.success === true) {
@@ -44,14 +45,8 @@ function App() {
       });
   };
 
-  return (
-    <div>
-      <button onClick={HandleCreateProject}>Guardar proyecto</button>
-      {saveProjectFail && <p style={{ color: 'red' }}>{saveProjectFail}</p>}
-      {saveProjectSuccess && <p style={{ color: 'green' }} dangerouslySetInnerHTML={{ __html: saveProjectSuccess }} />}
-    </div>
-  );
-}
+  
+
 
   const [info, setInfo] = useState({
     name: "",
@@ -116,6 +111,11 @@ function App() {
               Guardar Proyecto
             </CreateBtns>
           </fieldset>
+          <div>
+      <button onClick={HandleCreateProject}>Guardar proyecto</button>
+      {saveProjectFail && <p style={{ color: 'red' }}>{saveProjectFail}</p>}
+      {saveProjectSuccess && <p style={{ color: 'green' }} dangerouslySetInnerHTML={{ __html: saveProjectSuccess }} />}
+    </div>
         </form>
       </main>
       <Footer />
