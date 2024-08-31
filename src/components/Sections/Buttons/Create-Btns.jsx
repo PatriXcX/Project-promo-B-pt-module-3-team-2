@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 
 function CreateBtns({ onClick, children }) {
-  const handleClick = () => {
-    
+  const handleClick = (ev) => {
+    ev.preventDefault();
     onClick();
   };
   return (

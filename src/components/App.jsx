@@ -112,9 +112,9 @@ function App() {
             </CreateBtns>
           </fieldset>
           <div>
-      <button onClick={HandleCreateProject}>Guardar proyecto</button>
       {saveProjectFail && <p style={{ color: 'red' }}>{saveProjectFail}</p>}
-      {saveProjectSuccess && <p style={{ color: 'green' }} dangerouslySetInnerHTML={{ __html: saveProjectSuccess }} />}
+      {saveProjectSuccess && <p style={{ color: 'green' }} >{saveProjectSuccess}</p>}
+      
     </div>
         </form>
       </main>
