@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const InfoBtns = ({ uploadImage, uploadPhoto }) => {
+const InfoBtns = ({ infoKey, updateImage, children }) => {
 	const handleImageUpload = (event) => {
 		event.preventDefault();
 		const file = event.target.files[0];
@@ -9,21 +9,7 @@ const InfoBtns = ({ uploadImage, uploadPhoto }) => {
 		// Convertir la imagen a base64
 		reader.onloadend = () => {
 			const base64String = reader.result;
-			uploadImage(base64String); // lifting
-		};
-		if (file) {
-			reader.readAsDataURL(file);
-		}
-	};
-	const handlePhotoUpload = (event) => {
-		event.preventDefault();
-		const file = event.target.files[0];
-		const reader = new FileReader();
-
-		// Convertir la imagen a base64
-		reader.onloadend = () => {
-			const base64String = reader.result;
-			uploadPhoto(base64String); // lifting
+			updateImage(infoKey, base64String); // lifting
 		};
 		if (file) {
 			reader.readAsDataURL(file);
@@ -33,19 +19,11 @@ const InfoBtns = ({ uploadImage, uploadPhoto }) => {
 	return (
 		<>
 			<label className="button">
-				Subir foto del proyecto
+				{children}
 				<input
 					type="file"
 					className="addForm__hidden"
 					onChange={handleImageUpload}
-				/>
-			</label>
-			<label className="button">
-				Subir foto de la autora
-				<input
-					type="file"
-					className="addForm__hidden"
-					onChange={handlePhotoUpload}
 				/>
 			</label>
 		</>
@@ -53,8 +31,9 @@ const InfoBtns = ({ uploadImage, uploadPhoto }) => {
 };
 
 InfoBtns.propTypes = {
-	uploadImage: PropTypes.func.isRequired,
-	uploadPhoto: PropTypes.func.isRequired,
+	infoKey: PropTypes.string.isRequired,
+	updateImage: PropTypes.func.isRequired,
+	children: PropTypes.node.isRequired,
 };
 
 export default InfoBtns;

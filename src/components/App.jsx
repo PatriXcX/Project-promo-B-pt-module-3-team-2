@@ -9,20 +9,9 @@ import CreateBtns from "./Sections/Buttons/Create-Btns";
 import "../styles/App.scss";
 import Info from "./Sections/Info";
 import InfoBtns from "./Sections/Buttons/Info-Btns";
+import Preview from "./Sections/Preview";
 
 function App() {
-  //Función subir imagenes buttons form en API
-
-  const [image, setImage] = useState(null);
-  const [photo, setPhoto] = useState(null);
-
-  const uploadImage = (file) => {
-    setImage(file);
-  };
-  const uploadPhoto = (file) => {
-    setPhoto(file);
-  };
-
   //Función guardar form en API
 
   const handleCreateBtnsSave = (ev) => {
@@ -31,7 +20,7 @@ function App() {
   };
 
   const [info, setInfo] = useState({
-    nombreDelProyecto: "",
+    name: "",
     slogan: "",
     repo: "",
     demo: "",
@@ -39,6 +28,8 @@ function App() {
     desc: "",
     autor: "",
     job: "",
+    image: "",
+    photo: "",
   });
 
   useEffect(() => {
@@ -48,7 +39,15 @@ function App() {
     }
   }, []);
 
+  // Función subir imagenes buttons form en API
+  const updateImages = (key, image) => {
+    const newInfo = { ...info, [key]: image };
+    setInfo(newInfo);
+    localStorage.setItem("formInfo", JSON.stringify(newInfo));
+  };
+
   const handleInput = (ev) => {
+    console.log(ev.currentTarget);
     const key = ev.currentTarget.name;
     const newInfo = { ...info, [key]: ev.currentTarget.value };
     setInfo(newInfo);
@@ -69,65 +68,22 @@ function App() {
             Ver proyectos
           </a>
         </section>
-
-        <section className="preview">
-          <div className="projectImage"></div>
-          <article className="card">
-            <h2 className="card__projectTitle">
-              <span className="card__projectTitle--text">
-                Personal project card
-              </span>
-            </h2>
-
-            <div className="card__author">
-              <div className="card__authorPhoto"></div>
-              <p className="card__job">Full stack Developer</p>
-              <h3 className="card__name">{info.nombreDelProyecto}</h3>
-            </div>
-
-            <div className="card__project">
-              <h3 className="card__name">Elegant Workspace</h3>
-              <p className="card__slogan">Diseños Exclusivos</p>
-              <h3 className="card__descriptionTitle">Product description</h3>
-              <p className="card__description">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla,
-                quos? Itaque, molestias eveniet laudantium adipisci vitae
-                ratione
-              </p>
-
-              <div className="card__technicalInfo">
-                <p className="card__technologies">React JS - HTML - CSS</p>
-
-                <a
-                  className="icon icon__www"
-                  href="#"
-                  title="Haz click para ver el proyecto online"
-                >
-                  Web link
-                </a>
-                <a
-                  className="icon icon__github"
-                  href="#"
-                  title="Haz click para ver el código del proyecto"
-                >
-                  GitHub link
-                </a>
-              </div>
-            </div>
-          </article>
-        </section>
+        <Preview info={info}></Preview>
         <form className="addForm">
           <Info info={info} handleInput={handleInput} />
           <fieldset className="addForm__group--upload">
-            <InfoBtns uploadImage={uploadImage} uploadPhoto={uploadPhoto} />
-
+            <InfoBtns infoKey="image" updateImage={updateImages}>
+              Subir foto del proyecto
+            </InfoBtns>
+            <InfoBtns infoKey="photo" updateImage={updateImages}>
+              Subir foto de la autora
+            </InfoBtns>
             <CreateBtns handleCreateBtnsSave={handleCreateBtnsSave}>
               Guardar Proyecto
             </CreateBtns>
           </fieldset>
         </form>
       </main>
-
       <Footer />
     </div>
   );
