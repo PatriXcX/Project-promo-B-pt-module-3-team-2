@@ -29,7 +29,30 @@ function App() {
   const handleCreateBtnsSave = (ev) => {
     ev.preventDefault();
     console.log("has hecho click");
-  };
+
+    fetch('https://dev.adalab.es/api/projectCard',
+      
+      {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+})
+  
+      .then(response => response.json())
+      .then (responseJson => {
+
+        if (responseJson.success === false) {
+       
+            `<P>Ha sucedido un error al crear la tarjeta</P>
+               <P>${responseJson.error}</P>
+              `;
+        } else if (responseJson.success === true) {
+          creatCardLink.innerHTML = `<a href="${responseJson.cardURL}" target="_blank" class="creat_Card_link">${dataResponse.cardURL}</a>`;
+          
+
+        
+      };
 
   const [info, setInfo] = useState({
     name: "",
