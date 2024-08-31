@@ -1,16 +1,20 @@
 import PropTypes from "prop-types";
 
-function CreateBtns({ handleCreateBtnsSave, children }) {
+function CreateBtns({ onClick, children }) {
+  const handleClick = (ev) => {
+    ev.preventDefault();
+    onClick();
+  };
   return (
     <>
-      <button onClick={handleCreateBtnsSave} className="button--large">
+      <button onClick={handleClick} className="button--large">
         {children}
       </button>
     </>
   );
 }
 CreateBtns.propTypes = {
-  handleCreateBtnsSave: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
 };
 
