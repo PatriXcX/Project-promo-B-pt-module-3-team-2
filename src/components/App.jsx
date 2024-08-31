@@ -12,18 +12,6 @@ import InfoBtns from "./Sections/Buttons/Info-Btns";
 import Preview from "./Sections/Preview";
 
 function App() {
-  //Función subir imagenes buttons form en API
-
-  const [image, setImage] = useState(null);
-  const [photo, setPhoto] = useState(null);
-
-  const uploadImage = (file) => {
-    setImage(file);
-  };
-  const uploadPhoto = (file) => {
-    setPhoto(file);
-  };
-
   //Función guardar form en API
 
   const handleCreateBtnsSave = (ev) => {
@@ -63,6 +51,8 @@ function App() {
     desc: "",
     autor: "",
     job: "",
+    image: "",
+    photo: "",
   });
 
   useEffect(() => {
@@ -71,6 +61,13 @@ function App() {
       setInfo(JSON.parse(info));
     }
   }, []);
+
+  // Función subir imagenes buttons form en API
+  const updateImages = (key, image) => {
+    const newInfo = { ...info, [key]: image };
+    setInfo(newInfo);
+    localStorage.setItem("formInfo", JSON.stringify(newInfo));
+  };
 
   const handleInput = (ev) => {
     console.log(ev.currentTarget);
@@ -83,7 +80,7 @@ function App() {
   return (
     <div className="container">
       <Header />
-      PEPINO
+
       <main className="main">
         <section className="hero">
           <h2 className="title">Proyectos molones</h2>
@@ -98,8 +95,12 @@ function App() {
         <form className="addForm">
           <Info info={info} handleInput={handleInput} />
           <fieldset className="addForm__group--upload">
-            <InfoBtns uploadImage={uploadImage} uploadPhoto={uploadPhoto} />
-
+            <InfoBtns infoKey="image" updateImage={updateImages}>
+              Subir foto del proyecto
+            </InfoBtns>
+            <InfoBtns infoKey="photo" updateImage={updateImages}>
+              Subir foto de la autora
+            </InfoBtns>
             <CreateBtns handleCreateBtnsSave={handleCreateBtnsSave}>
               Guardar Proyecto
             </CreateBtns>

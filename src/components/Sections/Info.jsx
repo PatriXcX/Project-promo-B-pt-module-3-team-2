@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 
 function Info({ info, handleInput }) {
@@ -89,5 +90,11 @@ function Info({ info, handleInput }) {
     </>
   );
 }
+
+Info.propTypes = {
+  handleInput: PropTypes.func.isRequired,
+  info: PropTypes.object.isRequired,
+  
+};
 
 export default Info;

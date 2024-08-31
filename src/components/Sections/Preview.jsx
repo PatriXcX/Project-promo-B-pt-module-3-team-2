@@ -2,7 +2,10 @@ import PropTypes from "prop-types";
 function Preview({ info }) {
   return (
     <section className="preview">
-      <div className="projectImage"></div>
+      <div
+        className="projectImage"
+        style={{ backgroundImage: `url(${info.image})` }}
+      ></div>
       <article className="card">
         <h2 className="card__projectTitle">
           <span className="card__projectTitle--text">
@@ -11,7 +14,10 @@ function Preview({ info }) {
         </h2>
 
         <div className="card__author">
-          <div className="card__authorPhoto"></div>
+          <div
+            className="card__authorPhoto"
+            style={{ backgroundImage: `url(${info.photo})` }}
+          ></div>
           <p className="card__job">{info.job}</p>
           <h3 className="card__name">{info.autor || "Patri"}</h3>
         </div>
@@ -27,14 +33,14 @@ function Preview({ info }) {
 
             <a
               className="icon icon__www"
-              href="#"
+              href={info.demo}
               title="Haz click para ver el proyecto online"
             >
               Web link
             </a>
             <a
               className="icon icon__github"
-              href="#"
+              href={info.rep}
               title="Haz click para ver el código del proyecto"
             >
               GitHub link
