@@ -106,6 +106,7 @@ fieldset {
 .container {
   padding: 22px 22px 0 22px;
   background-color: var(--color-dark);
+  
 }
 
 .header {
@@ -133,7 +134,10 @@ fieldset {
   color: var(--color-white);
 }
 
+
+
 @media screen and (min-width: 768px) {
+
   .main {
     max-width: 980px;
     margin-inline: auto;
@@ -142,6 +146,7 @@ fieldset {
     gap: 2rem;
   }
 }
+
 
 .hero {
   margin-bottom: 3rem;
@@ -301,8 +306,9 @@ fieldset {
 /* FORM */
 
 .addForm {
-  margin: 0 20px 5px 20px;
-
+  margin: 0 0px 5px 0px;
+  
+  
   box-shadow: 2px 4px 4px 0 rgba(0, 0, 0, 0.25);
   border: solid 1px rgba(0, 0, 0, 0);
   background-image: radial-gradient(
@@ -310,6 +316,18 @@ fieldset {
     var(--color-dusk),
     #211e2e 92%
   );
+  @media (min-width:768px) {
+    margin: 0 20px 5px 20px;
+    
+  padding-inline: 30px;
+  box-shadow: 2px 4px 4px 0 rgba(0, 0, 0, 0.25);
+  border: solid 1px rgba(0, 0, 0, 0);
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    var(--color-dusk),
+    #211e2e 92%
+  );
+  }
 }
 
 .addForm .title {
@@ -511,13 +529,31 @@ fieldset {
 }
 
 .linkProyect {
-  color: green;
+  color: white;
+  border: solid 2px white;
+  border-radius: 40px;
+  padding: 10px;
+  margin-top: 20px;
 }
 a:hover {
-  color: lightgreen;
+  color: rgb(105, 240, 105);
+  
 }
 
 .landingPageCard {
   padding-top: 60px;
+}
+
+.message {
+  
+  margin-bottom: 20px;
+  line-height: 3;
+  
+}
+
+body {
+  background-color: #302c42;
+  min-height: 100vh;
+  text-align: center;
 }
 

@@ -145,14 +145,14 @@ function App() {
 												Guardar Proyecto
 											</CreateBtns>
 										</fieldset>
-										<div>
+										<div className="message">
 											{saveProjectFail && (
 												<p style={{ color: "red" }}>
 													{saveProjectFail}
 												</p>
 											)}
 											{saveProjectSuccess && (
-												<p style={{ color: "green" }}>
+												<p style={{ color: "white" }}>
 													Proyecto subido
 													exitosamente. Puedes verlo
 													aquí:{" "}
