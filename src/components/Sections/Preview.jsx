@@ -25,7 +25,7 @@ function Preview({ info }) {
         <div className="card__project">
           <h3 className="card__name">{info.name || "Elegant Workspace"}</h3>
           <p className="card__slogan">{info.slogan}</p>
-          <h3 className="card__descriptionTitle">{info.demo}</h3>
+          <h3 className="card__descriptionTitle">{info.desc}</h3>
           <p className="card__description">{info.desc}</p>
 
           <div className="card__technicalInfo">
@@ -40,7 +40,7 @@ function Preview({ info }) {
             </a>
             <a
               className="icon icon__github"
-              href={info.rep}
+              href={info.repo}
               title="Haz click para ver el código del proyecto"
             >
               GitHub link
