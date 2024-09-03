@@ -27,7 +27,7 @@ function Preview({ info }) {
 						{info.name || "Elegant Workspace"}
 					</h3>
 					<p className="card__slogan">{info.slogan}</p>
-					<h3 className="card__descriptionTitle">{info.demo}</h3>
+					<h3 className="card__descriptionTitle"></h3>
 					<p className="card__description">{info.desc}</p>
 
 					<div className="card__technicalInfo">
