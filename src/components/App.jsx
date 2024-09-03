@@ -10,6 +10,8 @@ import "../styles/App.scss";
 import Info from "./Sections/Info";
 import InfoBtns from "./Sections/Buttons/Info-Btns";
 import Preview from "./Sections/Preview";
+import LandingPage from "./Sections/LandingPage"; 
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [saveProjectSuccess, setSaveProjectSuccess] = useState("");
@@ -84,42 +86,66 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <Header />
-
-      <main className="main">
-        <section className="hero">
-          <h2 className="title">Proyectos molones</h2>
-          <p className="hero__text">
-            Escaparate en línea para recoger ideas a través de la tecnología
-          </p>
-          <a className="button--link" href="./">
-            Ver proyectos
-          </a>
-        </section>
-        <Preview info={info}></Preview>
-        <form className="addForm">
-          <Info info={info} handleInput={handleInput} />
-          <fieldset className="addForm__group--upload">
-            <InfoBtns infoKey="image" updateImage={updateImages}>
-              Subir foto del proyecto
-            </InfoBtns>
-            <InfoBtns infoKey="photo" updateImage={updateImages}>
-              Subir foto de la autora
-            </InfoBtns>
-            <CreateBtns onClick={HandleCreateProject} >
-              Guardar Proyecto
-            </CreateBtns>
-          </fieldset>
-          <div>
-      {saveProjectFail && <p style={{ color: 'red' }}>{saveProjectFail}</p>}
-      {saveProjectSuccess && <p style={{ color: 'green' }} >Proyecto subido exitosamente. Puedes verlo aquí: <a className="linkProyect" href={saveProjectSuccess}>{saveProjectSuccess}</a></p>}
-      
-    </div>
-        </form>
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <div className="container">
+        <Header />
+        <main className="main">
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route
+              path="/create"
+              element={
+                <>
+                  <section className="hero">
+                    <h2 className="title">Proyectos molones</h2>
+                    <p className="hero__text">
+                      Escaparate en línea para recoger ideas a través de la tecnología
+                    </p>
+                    <a className="button--link" href="./">
+                      Ver proyectos
+                    </a>
+                  </section>
+                  <Preview info={info} />
+                  <form className="addForm">
+                    <Info info={info} handleInput={handleInput} />
+                    <fieldset className="addForm__group--upload">
+                      <InfoBtns infoKey="image" updateImage={updateImages}>
+                        Subir foto del proyecto
+                      </InfoBtns>
+                      <InfoBtns infoKey="photo" updateImage={updateImages}>
+                        Subir foto de la autora
+                      </InfoBtns>
+                      <CreateBtns onClick={HandleCreateProject}>
+                        Guardar Proyecto
+                      </CreateBtns>
+                    </fieldset>
+                    <div>
+                      {saveProjectFail && (
+                        <p style={{ color: "red" }}>{saveProjectFail}</p>
+                      )}
+                      {saveProjectSuccess && (
+                        <p style={{ color: "green" }}>
+                          Proyecto subido exitosamente. Puedes verlo aquí:{" "}
+                          <a
+                            className="linkProyect"
+                            href={saveProjectSuccess}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {saveProjectSuccess}
+                          </a>
+                        </p>
+                      )}
+                    </div>
+                  </form>
+                </>
+              }
+            />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
