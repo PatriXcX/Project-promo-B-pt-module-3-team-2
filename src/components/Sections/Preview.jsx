@@ -28,11 +28,11 @@ function Preview({ info }) {
 					</h3>
 					<p className="card__slogan">{info.slogan}</p>
 					<h3 className="card__descriptionTitle"></h3>
-					<p className="card__description">{info.desc ||" La normalidad es una ilusión. Lo que es normal para la araña es el caos para la mosca. ¡Estoy en el borde de la locura! ¡Tan cerca, que podría empujarme!"}</p>
+					<p className="card__description">{info.desc || "La normalidad es una ilusión. Lo que es normal para la araña es el caos para la mosca. ¡Estoy en el borde de la locura! ¡Tan cerca, que podría empujarme!"}</p>
 
 					<div className="card__technicalInfo">
 						<p className="card__technologies">
-							{info.technologies}
+							{info.technologies ||" React JS - HTML - CSS"}
 						</p>
 
 						<a

@@ -113,8 +113,7 @@ function App() {
 											Proyectos molones
 										</h2>
 										<p className="hero__text">
-											Escaparate en línea para recoger
-											ideas a través de la tecnología
+										  Vitrina de sombras para coleccionar ideas en la penumbra digital
 										</p>
 										<a className="button--link" href="./">
 											Ver proyectos
