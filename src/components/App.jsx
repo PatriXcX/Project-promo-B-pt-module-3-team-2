@@ -11,7 +11,7 @@ import Info from "./Sections/Info";
 import InfoBtns from "./Sections/Buttons/Info-Btns";
 import Preview from "./Sections/Preview";
 import LandingPage from "./Sections/LandingPage";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [saveProjectSuccess, setSaveProjectSuccess] = useState("");
