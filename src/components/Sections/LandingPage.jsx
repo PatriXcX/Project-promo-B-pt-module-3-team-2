@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const LandingPage = () => {
+const LandingPage = ({info}) => {
   return (
     <div className="landing-page">
       <section className="hero">
@@ -17,23 +17,25 @@ const LandingPage = () => {
         <article className="card">
           <h2 className="card__projectTitle">
             <span className="card__projectTitle--text">
-              Personal project card
+              Ficha De Proyecto Tenebroso
             </span>
           </h2>
 
           <div className="card__author">
-            <div className="card__authorPhoto"></div>
-            <p className="card__job">Full stack Developer</p>
-            <h3 className="card__name">Emmelie Bjôrklund</h3>
+            <p className="card__job">Tejiendo Código en las Sombras</p>
+            <div className="card__authorPhoto"
+						  style={{ backgroundImage: `url(${info.photo || "https://theobjective.com/wp-content/uploads/2020/10/morticia-portada-e1603540026942.png"})` }}
+					  ></div>
+            <h3 className="card__name">Morticia Addams</h3>
           </div>
 
           <div className="card__project">
-            <h3 className="card__name">Elegant Workspace</h3>
+            <h3 className="card__name">Ficha De Proyecto Tenebroso</h3>
             <p className="card__slogan">Diseños Exclusivos</p>
-            <h3 className="card__descriptionTitle">Product description</h3>
+            <h3 className="card__descriptionTitle">Elegante y macabro</h3>
             <p className="card__description">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla,
-              quos? Itaque, molestias eveniet laudantium adipisci vitae ratione
+              Un día sin oscuridad, es un día perdido.
+              En esta casa, lo tenebroso no asusta, lo ordinario sí.
             </p>
 
             <div className="card__technicalInfo">
@@ -66,18 +68,20 @@ const LandingPage = () => {
           </h2>
 
           <div className="card__author">
-            <div className="card__authorPhoto"></div>
-            <p className="card__job">Full stack Developer</p>
-            <h3 className="card__name">Emmelie Bjôrklund</h3>
+            <p className="card__job">Arquitecta de lo Oscuro</p>
+            <div className="card__authorPhoto"
+						  style={{ backgroundImage: `url(${info.photo || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmX0F7PmA6NIiZ2WB7n4rKy-RprgurWXsScYiXuysivV8V4heuWPlrKZxNBT9j8obwwJw&usqp=CAU"})` }}
+					  ></div>
+            <h3 className="card__name">Abuela Addams</h3>
           </div>
 
           <div className="card__project">
-            <h3 className="card__name">Elegant Workspace</h3>
+            <h3 className="card__name">Ficha De Proyecto Tenebroso</h3>
             <p className="card__slogan">Diseños Exclusivos</p>
-            <h3 className="card__descriptionTitle">Product description</h3>
+            <h3 className="card__descriptionTitle">La oscuridad nos guía</h3>
             <p className="card__description">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla,
-              quos? Itaque, molestias eveniet laudantium adipisci vitae ratione
+              Lo raro es normal.
+              La oscuridad nos ilumina.
             </p>
 
             <div className="card__technicalInfo">

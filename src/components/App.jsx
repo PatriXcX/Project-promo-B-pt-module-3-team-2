@@ -101,7 +101,7 @@ function App() {
         <Header />
         <main className="main">
           <Routes>
-            <Route path="/" element={<LandingPage />} />
+            <Route path="/" element={<LandingPage info={info} />} />
             <Route
               path="/create"
               element={
